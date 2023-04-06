@@ -4,9 +4,20 @@ Modes and Parameters
 Mode
 =======================
 
-In Mist, we provide several modes to meet various demands of users. The following
-table demonstrates the performance of three modes against different AI-for-Art
-applications.
+Mist provides three modes for different anti-imitation scenarios. Users can decide which mode to use according to their specific situation.
+
+
+Textural mode: By injecting confusing texture information into the watermark to achieve the effect of anti-AI imitation; mainly against Img2Img; requires less GPU video memory.
+
+
+Semantic mode: By interfering with the semantic information of the original image with the watermark; mainly against subject-driven generation (Textual Inversion, Dreambooth, etc.) scenes; requires more GPU video memory.
+
+
+Fused mode: By mixing Textural and Semantic modes in a certain ratio; requires more GPU video memory.
+
+
+
+The following table demonstrates the performance of the three modes in the four scenarios: Textual Inversion, NovelAI Img2Img, Dreambooth, and Scenario.gg. Among them, Textual Inversion and Dreambooth are both based on Stable Diffusion.
 
 +-------------------------------------------------------+-------------------+-----------------+------------+-------------+
 |                                                       | Textual Inversion | NovelAI Img2Img | Dreambooth | Scenario.gg |
