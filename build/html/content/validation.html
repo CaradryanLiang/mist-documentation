@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validation &mdash; Mist 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Device Requirements" href="device.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Mist
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mode.html">Modes and Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Device Requirements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Validation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#textual-inversion">Textual Inversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#novelai-img2img">NovelAI Img2Img</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dreambooth">Dreambooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-gg">Scenario.gg</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mist</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Validation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/content/validation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="validation">
+<h1>Validation<a class="headerlink" href="#validation" title="Permalink to this headline"></a></h1>
+<p>Mist works on various AI-for-Art applications. To help users validate the performance
+of Mist quickly, we detail the steps of validation in this guideline.</p>
+<p>A package of example images that can be used for validation are also available on
+<a class="reference external" href="https://drive.google.com/drive/folders/1AlRWoEpujYjieqqu3sEQIrH4eoxf0ppA?usp=share_link">Google Drive</a>.
+In the package, images in “training” directory
+are used for validation on Textual Inversion, Dreambooth and Scenario.gg. Images in “Img2Img” directory
+are used for testing under NovelAI. You can also use your own images for validation.
+Next, we would illustrate the pipeline to validate Mist in various
+AI-for-Art applications.</p>
+<section id="textual-inversion">
+<h2>Textual Inversion<a class="headerlink" href="#textual-inversion" title="Permalink to this headline"></a></h2>
+<p>Textual inversion is a tool that can summarize the input images using a pseudo-word for further style transferring. To reproduce our result, you can try access textual inversion through the open-source Stable-diffuion-webui on <a class="reference external" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">GitHub</a>.</p>
+<p>Access the textual inversion tab; Create a new embedding called Mist-Vangogh with initialization text set as style * and number of vectors per token fixed to 8.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-train-1-text.png" />
+<p></p>
+<p>Then train the embedding for 6,000 steps with the images processed by Mist.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-train-2-text.png" />
+<p></p>
+<p>After training, you can generate images in either Img2Img or txt2img tab by adding prompt: “An image in the style of Mist-Vangogh”</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-train-3-text.png" />
+<p></p>
+</section>
+<section id="novelai-img2img">
+<h2>NovelAI Img2Img<a class="headerlink" href="#novelai-img2img" title="Permalink to this headline"></a></h2>
+<p>NovelAI is an online commercial websites supporting  <a class="reference external" href="https://novelai.net/image">Img2Img generation</a>.  Use NAI Diffusion Anime and fix the prompt to “woman with a Parasol, high resolution, outdoor, flowers, blue sky”, the solution to 512, the random seed to 1255, the steps to 40, the guidance to 11, and the sampler to DPM++ 2M. Then we change the strength to 0.25, 0.35 and 0.5 respectively.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/novelai.png" />
+<p></p>
+</section>
+<section id="dreambooth">
+<h2>Dreambooth<a class="headerlink" href="#dreambooth" title="Permalink to this headline"></a></h2>
+<p>Dreambooth is a method that can retrain the Stable Diffusion for customized generation. We use the dreambooth training scripts provided by <a class="reference external" href="https://huggingface.co/docs/diffusers/training/dreambooth">diffuser</a>. Vangogh images processed by Mist are used to retrain both the unet and the text_encoder of <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable diffusion v1.4</a> with a learning rate fixed to 2e-6 and max training steps fixed to 2000. The code below is our script for training Dreambooth.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export MODEL_NAME=&quot;CompVis/stable-diffusion-v1-4&quot;
+export INSTANCE_DIR=&quot;../Mist_Vangogh&quot;
+export OUTPUT_DIR=&quot;dreambooth/Mist_Vangogh/&quot;
+
+
+accelerate launch train_dreambooth.py \
+  --pretrained_model_name_or_path=$MODEL_NAME  \
+  --instance_data_dir=$INSTANCE_DIR \
+  --output_dir=$OUTPUT_DIR \
+  --instance_prompt=&quot;a painting style&quot; \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --gradient_accumulation_steps=1 \
+  --learning_rate=2e-6 \
+  --lr_scheduler=&quot;constant&quot; \
+  --lr_warmup_steps=0 \
+  --max_train_steps=2000 \
+  --train_text_encoder \
+</pre></div>
+</div>
+<p>You can also try   <a class="reference external" href="https://github.com/d8ahazard/sd_dreambooth_extension">dreambooth extension of SDM webui</a> ,  which should produce similar results.</p>
+</section>
+<section id="scenario-gg">
+<h2>Scenario.gg<a class="headerlink" href="#scenario-gg" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://app.scenario.com/">Scenario</a>.gg is a website supporting customized generator. First, access to the ‘Create a Generator’ tab. Then use the Vangogh images processed by Mist to train the generator. We use the auto training mode provided by scenario.gg and set the training class as Art style - Painting.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/scenario1.png" />
+<p></p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/scenario2.png" />
+<p></p>
+<p>It is important to note that the default parameter for training in scenario.gg may change from time to time. For reference, the default parameters by the time we test Mist on scenario.gg are listed below:</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/scenario3.png" />
+<p></p>
+<p>Then you can generate images based on Mist-Vangogh using the ‘Generate Images’ Tab.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/scenario4.png" />
+<p></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="device.html" class="btn btn-neutral float-left" title="Device Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Mist.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
