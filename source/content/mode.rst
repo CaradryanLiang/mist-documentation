@@ -4,16 +4,16 @@ Modes and Parameters
 Mode
 =======================
 
-Mist provides three modes for different anti-imitation scenarios. Users can decide which mode to use according to their specific situation.
+Mist provides three modes for different anti-imitation scenarios. Users can decide which mode to use according to their needs.
 
 
-Textural mode: By injecting confusing texture information into the watermark to achieve the effect of anti-AI imitation; mainly against Img2Img; requires less GPU video memory.
+Textural mode: By injecting confusing texture information into the watermark to achieve the effect of anti-AI imitation; mainly against Img2Img; requires less GPU memory.
 
 
-Semantic mode: By interfering with the semantic information of the original image with the watermark; mainly against subject-driven generation (Textual Inversion, Dreambooth, etc.) scenes; requires more GPU video memory.
+Semantic mode: By interfering with the semantic information of the original image with the watermark; mainly against subject-driven generation (Textual Inversion, Dreambooth, etc.) scenes; requires more GPU memory.
 
 
-Fused mode: By mixing Textural and Semantic modes in a certain ratio; requires more GPU video memory.
+Fused mode: By mixing Textural and Semantic modes in a certain ratio; requires more GPU memory.
 
 
 
@@ -31,8 +31,6 @@ The following table demonstrates the performance of the three modes in the four 
 | ◎:very strong      ○:strong      △:medium      ╳:weak                                                                  |
 +-------------------------------------------------------+-------------------+-----------------+------------+-------------+
 
-It seems that Fused mode covers the advantage of both Textual and Semantic mode. However, Textural mode is the
-most VRAM-saving mode (See in *Device Requirements*) while Semantic mode shows superiority in Textual Inversion.
 
 
 
