@@ -77,9 +77,11 @@
 <h1>Modes and Parameters<a class="headerlink" href="#modes-and-parameters" title="Permalink to this headline"></a></h1>
 <section id="mode">
 <h2>Mode<a class="headerlink" href="#mode" title="Permalink to this headline"></a></h2>
-<p>In Mist, we provide several modes to meet various demands of users. The following
-table demonstrates the performance of three modes against different AI-for-Art
-applications.</p>
+<p>Mist provides three modes for different anti-imitation scenarios. Users can decide which mode to use according to their needs.</p>
+<p>Textural mode: By injecting confusing texture information into the watermark to achieve the effect of anti-AI imitation; mainly against Img2Img; requires less GPU memory.</p>
+<p>Semantic mode: By interfering with the semantic information of the original image with the watermark; mainly against subject-driven generation (Textual Inversion, Dreambooth, etc.) scenes; requires more GPU memory.</p>
+<p>Fused mode: By mixing Textural and Semantic modes in a certain ratio; requires more GPU memory.</p>
+<p>The following table demonstrates the performance of the three modes in the four scenarios: Textual Inversion, NovelAI Img2Img, Dreambooth, and Scenario.gg. Among them, Textual Inversion and Dreambooth are both based on Stable Diffusion.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 47%" />
@@ -119,8 +121,6 @@ applications.</p>
 </tr>
 </tbody>
 </table>
-<p>It seems that Fused mode covers the advantage of both Textual and Semantic mode. However, Textural mode is the
-most VRAM-saving mode (See in <em>Device Requirements</em>) while Semantic mode shows superiority in Textual Inversion.</p>
 </section>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h2>

@@ -53,7 +53,7 @@ NovelAI Img2Img
 NovelAI is an online commercial websites supporting  `Img2Img generation <https://novelai.net/image>`_.  Use NAI Diffusion Anime and fix the prompt to "woman with a Parasol, high resolution, outdoor, flowers, blue sky", the solution to 512, the random seed to 1255, the steps to 40, the guidance to 11, and the sampler to DPM++ 2M. Then we change the strength to 0.25, 0.35 and 0.5 respectively. 
 
 
-.. image:: ../media/novelai.png
+.. image:: ../media/NovelAI.png
    :align: center
    :alt: fig_cbscenario
 
