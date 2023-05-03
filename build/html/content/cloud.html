@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Deployment &mdash; Mist 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Validation" href="validation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Mist
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mode.html">Modes and Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device.html">Device Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validation.html">Validation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloud Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rent-a-cloud-server">Rent a cloud server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-mist">Deploy Mist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-mist-on-cloud">Use Mist on cloud</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mist</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Cloud Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/content/cloud.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cloud-deployment">
+<h1>Cloud Deployment<a class="headerlink" href="#cloud-deployment" title="Permalink to this headline"></a></h1>
+<p>Mist has a high <cite>device requirements &lt;./device.html&gt;_</cite>
+for computing resourses, especially in GPU. When your local device
+is not good enough, we recommend you to deploy and use Mist on cloud.
+Concretely, cloud deployment means that users install Mist on
+cloud server rented from GPU cloud service. Since cloud servers are
+of high grade and on demand, it would benefit users who lack of
+computing resources good enough for deploying Mist locally.</p>
+<p><strong>Note</strong>: cloud servers are <strong>on demand</strong>. Please <strong>shut down them as soon as
+they complete the task</strong>.</p>
+<p>In this section, we will give the instruction in how to rent a cloud server
+and deploy Mist on it. We use Runpod as the example, since
+it is one of the cheapist cloud services.</p>
+<p>The whole deployment can be separated
+into three steps. First, rent a cloud server from RunPod. Second, download the
+source code and install Mist. Third, boot Mist.</p>
+<section id="rent-a-cloud-server">
+<h2>Rent a cloud server<a class="headerlink" href="#rent-a-cloud-server" title="Permalink to this headline"></a></h2>
+<p>Access the homepage of <a class="reference external" href="runpod.io">RunPod</a>. Click on ‘Sign Up’ or ‘Login’ to register
+or log in your account.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-1.png" />
+<p></p>
+<p>After logging in, you will see the console. Click on ‘My Template’ in the left
+column, then the ‘New Template’ button.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-2.png" />
+<p></p>
+<p>Fill the configuration table as following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Container</span> <span class="n">Image</span><span class="p">:</span> <span class="n">public</span><span class="o">.</span><span class="n">ecr</span><span class="o">.</span><span class="n">aws</span><span class="o">/</span><span class="n">f9c5c8j0</span><span class="o">/</span><span class="n">mist</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">model</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">Docker</span> <span class="n">Command</span><span class="p">:</span> <span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;sleep infinity&#39;</span>
+</pre></div>
+</div>
+<p>Then click on the ‘Save Template’ button.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-3.png" />
+<p></p>
+<p>You will find a new template called mist at the bottom of the template list.
+Note that if you have created the template before, you do not need to create
+it again.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-4.png" />
+<p></p>
+<p>After creating the template, you can now rent a cloud server with the
+template. Click on ‘Secure Cloud’ in the left column.</p>
+<p>Here lists the configuration of various cloud servers. Check our <a class="reference external" href="./device.html">device requirements</a> and select the server with appropriate configuration. Here, we choose
+a server with RTX A5000. Click on the ‘Deploy’ button to rent the server.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-5.png" />
+<p></p>
+<p>Choose ‘mist’ in the option box ‘Select a Template’. Then click on ‘Continue’.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-6.png" />
+<p></p>
+<p>Click on ‘Deploy’.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-7.png" />
+<p></p>
+<p>Turn to the UI ‘My Pod’ by clicking on ‘My Pod’ in the left column.
+You can see the progress to build the cloud server.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-8.png" />
+<p></p>
+<p>Wait for a while until the server is built. Click on ‘Connect’.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-9.png" />
+<p></p>
+<p>In ‘Connection Options’, click on ‘Start Web Terminal’.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-10.png" />
+<p></p>
+<p>Click on ‘Connect to Web Terminal’.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-11.png" />
+<p></p>
+<p>In the new created page, you can see the command line of the cloud server.
+That is where you operate the cloud server and run Mist.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-12.png" />
+<p></p>
+</section>
+<section id="deploy-mist">
+<h2>Deploy Mist<a class="headerlink" href="#deploy-mist" title="Permalink to this headline"></a></h2>
+<p>Download and install two necessary packages via following commands.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">wget</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span>
+</pre></div>
+</div>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-13.png" />
+<p></p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-14.png" />
+<p></p>
+<p>Clone the source code of Mist to the <code class="docutils literal notranslate"><span class="pre">workspace</span></code> directory. Then reinstall
+<code class="docutils literal notranslate"><span class="pre">pillow</span></code> by pip.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mist</span><span class="o">-</span><span class="n">project</span><span class="o">/</span><span class="n">mist</span><span class="o">.</span><span class="n">git</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="n">pillow</span>
+</pre></div>
+</div>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-15.png" />
+<p></p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-16.png" />
+<p></p>
+<p>Get into the <code class="docutils literal notranslate"><span class="pre">mist</span></code> directory and download the clip model from huggingface.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">huggingface</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">CompVis</span><span class="o">/</span><span class="n">stable</span><span class="o">-</span><span class="n">diffusion</span><span class="o">-</span><span class="n">v</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">original</span><span class="o">/</span><span class="n">resolve</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">sd</span><span class="o">-</span><span class="n">v1</span><span class="o">-</span><span class="mf">4.</span><span class="n">ckpt</span>
+</pre></div>
+</div>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-17.png" />
+<p></p>
+<p>Move the model to the correct location.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span>  <span class="n">models</span><span class="o">/</span><span class="n">ldm</span><span class="o">/</span><span class="n">stable</span><span class="o">-</span><span class="n">diffusion</span><span class="o">-</span><span class="n">v1</span>
+<span class="n">mv</span> <span class="n">sd</span><span class="o">-</span><span class="n">v1</span><span class="o">-</span><span class="mf">4.</span><span class="n">ckpt</span> <span class="n">models</span><span class="o">/</span><span class="n">ldm</span><span class="o">/</span><span class="n">stable</span><span class="o">-</span><span class="n">diffusion</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="n">model</span><span class="o">.</span><span class="n">ckpt</span>
+</pre></div>
+</div>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-18.png" />
+<p></p>
+<p>Now you have all installation completed. In the next part, we will
+talk about the usage of Mist on cloud.</p>
+</section>
+<section id="use-mist-on-cloud">
+<h2>Use Mist on cloud<a class="headerlink" href="#use-mist-on-cloud" title="Permalink to this headline"></a></h2>
+<p>In the <code class="docutils literal notranslate"><span class="pre">mist</span></code> directory, use the following command to run Mist.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">mist_v3</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">input_dir_path</span> <span class="n">test</span><span class="o">/</span><span class="n">vangogh</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">vangogh</span>
+</pre></div>
+</div>
+<p>where the input images are placed in <code class="docutils literal notranslate"><span class="pre">./test/vangogh</span></code> and the output images
+would be placed in <code class="docutils literal notranslate"><span class="pre">./output/dir/vangogh_{A}_{B}_{C}</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">{A}</span></code>, <code class="docutils literal notranslate"><span class="pre">{B}</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">{C}</span></code> means some parameters of Mist used to process these output images.
+Note that the <code class="docutils literal notranslate"><span class="pre">input_dir_path</span></code> can be modified to any directories in the
+<code class="docutils literal notranslate"><span class="pre">mist</span></code> directory.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-19.png" />
+<p></p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-20.png" />
+<p></p>
+<p>For description and recommended values of the parameters, see the table
+at the bottom of <a class="reference external" href="./mode.html">mode and parameters</a>.
+The parameters can be modified by adding a prefix and the value to the command. Fox example,
+if you want to set the value of the parameter epsilon as 8, use the following
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">mist_v3</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">input_dir_path</span> <span class="n">test</span><span class="o">/</span><span class="n">vangogh</span> <span class="o">--</span><span class="n">output_dir</span> <span class="n">vangogh</span> <span class="o">--</span><span class="n">epsilon</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>Here, we give a table to demonstrate the prefix used in the command for each parameter.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 19%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Prefix</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Strength</p></td>
+<td><p>–epsilon</p></td>
+<td><p>Default: 16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Steps</p></td>
+<td><p>–steps</p></td>
+<td><p>Default: 16</p></td>
+</tr>
+<tr class="row-even"><td><p>Output size</p></td>
+<td><p>–input_size</p></td>
+<td><p>Default: 16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fused weight</p></td>
+<td><p>–rate</p></td>
+<td><p>Default: 16</p></td>
+</tr>
+<tr class="row-even"><td><p>Low VRAM Mode</p></td>
+<td><p>–block_num</p></td>
+<td><p>1 means normal mode. 2 means Low VRAM mode. Default: 1.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Now, you can boot Mist to process your images. To upload your images to the cloud server, click on
+“Cloud Sync” in the following page.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-21.png" />
+<p></p>
+<p>You can choose a convenient approach from these approaches to share your images
+to the cloud server.</p>
+<img alt="fig_cbscenario" class="align-center" src="../_images/Fig-cloud-runpod-22.png" />
+<p></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="validation.html" class="btn btn-neutral float-left" title="Validation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Mist.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

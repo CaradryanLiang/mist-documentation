@@ -40,4 +40,5 @@ and other interesting topics associated with the rapidly evolving field of AI. S
       content/mode.rst
       content/device.rst
       content/validation.rst
+      content/cloud.rst
  
