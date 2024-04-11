@@ -29,7 +29,7 @@ functions, as well as discussing technical, moral and legal issues related to AI
 and other interesting topics associated with the rapidly evolving field of AI. See our 
 `Homepage`_ to join us!
 
-.. _`Homepage`: https://mist-project.github.io/
+.. _`Homepage`: https://psyker-team.github.io/
 
 
    .. toctree::
